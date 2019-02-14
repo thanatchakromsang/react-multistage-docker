@@ -1,0 +1,14 @@
+FROM node:10.15.1
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+COPY package.json .
+COPY yarn.lock .
+
+RUN yarn install --ignore-platform
+
+COPY . .
+
+CMD ["yarn", "start"]
